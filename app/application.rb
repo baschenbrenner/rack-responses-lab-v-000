@@ -4,7 +4,11 @@ class Application
     resp = Rack::Response.new
       time=Time.now
       if time.to_s.split(" ")[1].split(":")[0].to_i < 12
-    resp.write "Good morning it is now #{time.to_s.split(" ")[1]} in London"
+        resp.write "Good morning! It is now #{time.to_s.split(" ")[1]} in London"
+      elsif time.to_s.split(" ")[1].split(":")[0].to_i > 11
+        resp.write "Good afternoon! It is now #{time.to_s.split(" ")[1]} in London"
+      end
+  
     resp.finish
   end
 
